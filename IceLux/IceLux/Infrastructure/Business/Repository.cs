@@ -1,5 +1,6 @@
 ﻿using IceLux.Domain.Repositories;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,9 @@ namespace IceLux.Infrastructure.Business
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected readonly IdentityDbContext Context;
         //protected readonly IdentityDbContext<ApplicationUser> Context;
-        //protected readonly DbContext Context;
-        public Repository(IdentityDbContext context)
+        protected readonly DbContext Context;
+        public Repository(DbContext context)
         {
             Context = context;
         }

@@ -1,7 +1,9 @@
 ﻿using IceLux.Domain.Core;
 using IceLux.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace IceLux.Infrastructure.Business
 {
@@ -24,7 +26,10 @@ namespace IceLux.Infrastructure.Business
 
         public Firm GetFirmWithCenters(int firmId)
         {
-            throw new NotImplementedException();
+            return TakingContext.Firms
+                .Include(f => f.Centers)
+                .SingleOrDefault(c => c.Id == firmId);
+            
         }
 
         public TakingContext TakingContext

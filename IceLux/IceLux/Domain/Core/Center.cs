@@ -27,6 +27,8 @@ namespace IceLux.Domain.Core
 modelbuilder.Entity<Center>().HasOptional(b=>b.ParentCenter )
                                   .WithMany(b=>b.Children )
                                   .HasForeignKey(b=>b.ParentCenterId);
+
+        modelBuilder.Entity<Center>().HasOne(s => s.Centers).WithMany().HasForeignKey(e => e.ParentCenterId)
                                   */
     }
 }
